@@ -10,6 +10,8 @@ var store = new simpleJsonStore('./data.json', { accounts: [] });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.use(express.static('public'));
+
 //home html
 app.get('/', (req, res) => { 
   res.render('../fund.pug');
