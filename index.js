@@ -79,7 +79,7 @@ app.put('/api/:id', (req,res) => {
 });
 
 //update user using accountNumber
-app.put('/api/deposit/:accountNumber', (req,res) => {
+app.put('/api/account/:accountNumber', (req,res) => {
   var accountNumber = req.params.accountNumber;
   var all = store.get('accounts');
   let note = {};
