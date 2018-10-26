@@ -20,8 +20,9 @@ html(lang="en")
             input.form-control#pin(type="password" name="pin" v-model="pin")
           .form-group
             button.btn.btn-primary(type="button" v-on:click="check") Check Balance
-          
-
+      section
+        h1 Your Balance: {{ balance }}
+            
     script(src="https://unpkg.com/axios/dist/axios.min.js")
     script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
     script(src="/app.js")

@@ -10,6 +10,9 @@ html(lang="en")
 
   body
     main#app(role="main" class="container")
+
+        h1 Your Balance is
+        //- h2 {{ response.data }}
         h1 Fund Transfer
         form#fundTransferForm(action="/" method="POST")
           .form-group
@@ -23,7 +26,6 @@ html(lang="en")
             input.form-control#amount(type="text" name="amount" v-model="amount")
           .form-group
             button.btn.btn-primary(type="button" v-on:click="transfer") Transfer
-          
           
 
     script(src="https://unpkg.com/axios/dist/axios.min.js")

@@ -29,10 +29,6 @@
     },
     check: function() {
       var self = this;
-      var payload = {
-        accountNumber: self.accountNumber,
-        pin: self.pin
-      };
       axios.get('/api/:id', {
           params: {
             accountNumber: self.accountNumber,
@@ -40,12 +36,11 @@
           }
         })
         .then(function (response) {
-          console.log(response.data);
+          self.balance = response.data.balance
         })
         .catch(function (error) {
           console.log(error);
         });
-
     },
     }
   });
