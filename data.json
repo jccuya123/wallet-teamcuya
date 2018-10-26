@@ -2,7 +2,10 @@
 	"accounts": [
 		{
 			"accountNumber": "0000-0000-0001",
-			"balance": null
+			"balance": null,
+			"id": null,
+			"name": null,
+			"pin": "123"
 		},
 		{
 			"id": "2",

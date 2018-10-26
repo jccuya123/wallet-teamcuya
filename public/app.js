@@ -17,7 +17,7 @@
         self.accounts = res.data;
       })
       .catch(function(err) {
-        self.accounts = [];
+        console.log(err)
       });
     },
     methods: {
@@ -48,8 +48,8 @@
       var accountNumber = self.accountNumber;
       console.log(accountNumber)
       axios.put('/api/deposit/'+accountNumber, {
-          balance: self.balance
-        }.bind(this))
+          pin: self.pin
+        })
       .then(function (response) {
         console.log(response.data);
       })
