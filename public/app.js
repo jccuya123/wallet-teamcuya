@@ -45,9 +45,23 @@
     },
     deposit: function() {
       var self = this;
-      var accountNumber = self.accountNumber;
+      var accountNumber = self.accountNumber + self.amount;
       console.log(accountNumber)
-      axios.put('/api/deposit/'+accountNumber, {
+      axios.put('/api/account/'+accountNumber, {
+          pin: self.pin
+        })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    withdraw: function() {
+      var self = this;
+      var accountNumber = self.accountNumber - self.amount;
+      console.log(accountNumber)
+      axios.put('/api/account/'+accountNumber, {
           pin: self.pin
         })
       .then(function (response) {
