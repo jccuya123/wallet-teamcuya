@@ -8,7 +8,9 @@
     balance: null,
     pin: null,
     accounts: [],
-    amount: null
+    amount: null,
+    senderAccountNumber: null,
+    receiverAccountNumber: null
     },
     created: function() {
     var self = this;
@@ -71,6 +73,36 @@
         console.log(error);
       });
     },
+    bills: function() {
+      var self = this;
+      var accountNumber = self.accountNumber - self.amount;
+      console.log(accountNumber)
+      axios.put('/api/account/'+accountNumber, {
+          pin: self.pin
+        })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    fund: function() {
+      var self = this;
+      var accountNumber = self.accountNumber - self.amount;
+      console.log(accountNumber)
+      axios.put('/api/account/'+accountNumber, {
+          pin: self.pin
+        })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+
+
     }
   });
 })();

@@ -10,22 +10,26 @@ html(lang="en")
 
   body
     main#app(role="main" class="container")
-        
-        h1 Fund Transfer
-        form#fundTransferForm(action="/" method="POST")
+      h1 Bills Payment
+      form#fundTransferForm(action="/" method="POST")
           .form-group
-            label Sender Account Number
-            input.form-control#senderAccountNumber(type="text" name="senderAccountNumber" v-model="senderAccountNumber")
+            label Account Number
+            input.form-control#accountNumber(type="text" name="accountNumber" v-model="accountNumber")
           .form-group
-            label Receiver Account Number
-            input.form-control#receiverAccountNumber(type="text" name="receiverAccountNumber" v-model="receiverAccountNumber")
+            label PIN
+            input.form-control#pin(type="password" name="pin" v-model="pin")
           .form-group
-            label Amount to transfer
+            label Billing Name
+            input.form-control#billingName(type="text" name="billingName")
+          .form-group
+            label Amount
             input.form-control#amount(type="text" name="amount" v-model="amount")
+          
           .form-group
-            button.btn.btn-primary(type="button" v-on:click="fund") Transfer
-        h1 Your balance is: {{ balance }}  
-
+            button.btn.btn-primary(type="button" v-on:click="bills") Pay
+      section
+        h1 
+            
     script(src="https://unpkg.com/axios/dist/axios.min.js")
     script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
     script(src="/app.js")

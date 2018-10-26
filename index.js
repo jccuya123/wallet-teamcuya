@@ -14,6 +14,11 @@ app.use(express.static('public'));
 
 //home html
 app.get('/', (req, res) => { 
+  res.render('../check.pug');
+});
+
+//fund transfer html
+app.get('/fund', (req, res) => { 
   res.render('../fund.pug');
 });
 
@@ -30,6 +35,11 @@ app.get('/deposit', (req, res) => {
 //withdraw html
 app.get('/withdraw', (req, res) => { 
   res.render('../withdraw.pug');
+});
+
+//bills payment html
+app.get('/bills', (req, res) => { 
+  res.render('../bills.pug');
 });
 
 //all users
