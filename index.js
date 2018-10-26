@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
   res.render('../fund.pug');
 });
 
+//check balance html
+app.get('/check', (req, res) => { 
+  res.render('../check.pug');
+});
+
 //all users
 app.get('/api/', (req,res) => {
   var accounts = store.get('accounts'); 
