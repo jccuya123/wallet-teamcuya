@@ -27,6 +27,11 @@ app.get('/deposit', (req, res) => {
   res.render('../deposit.pug');
 });
 
+//withdraw html
+app.get('/withdraw', (req, res) => { 
+  res.render('../withdraw.pug');
+});
+
 //all users
 app.get('/api/', (req,res) => {
   var accounts = store.get('accounts'); 
