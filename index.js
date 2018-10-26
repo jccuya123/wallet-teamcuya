@@ -22,6 +22,11 @@ app.get('/check', (req, res) => {
   res.render('../check.pug');
 });
 
+//deposit html
+app.get('/deposit', (req, res) => { 
+  res.render('../deposit.pug');
+});
+
 //all users
 app.get('/api/', (req,res) => {
   var accounts = store.get('accounts'); 
@@ -61,6 +66,27 @@ app.put('/api/:id', (req,res) => {
   for (let i = 0; i < all.length; i++) {
     if (all[i].id == id) {
       all[i].accountNumber = req.body.accountNumber;
+      all[i].name = req.body.name;
+      all[i].balance = req.body.balance;
+      all[i].pin = req.body.pin;
+      note = all[i];
+      break;
+    }
+  }
+
+  store.set('accounts', all);
+  res.json(note);
+});
+
+//update user using accountNumber
+app.put('/api/deposit/:accountNumber', (req,res) => {
+  var accountNumber = req.params.accountNumber;
+  var all = store.get('accounts');
+  let note = {};
+  
+  for (let i = 0; i < all.length; i++) {
+    if (all[i].accountNumber == accountNumber) {
+      all[i].id = req.body.id;
       all[i].name = req.body.name;
       all[i].balance = req.body.balance;
       all[i].pin = req.body.pin;

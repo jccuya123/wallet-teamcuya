@@ -7,7 +7,8 @@
     name: null,
     balance: null,
     pin: null,
-    accounts: []
+    accounts: [],
+    amount: null
     },
     created: function() {
     var self = this;
@@ -41,6 +42,20 @@
         .catch(function (error) {
           console.log(error);
         });
+    },
+    deposit: function() {
+      var self = this;
+      var accountNumber = self.accountNumber;
+      console.log(accountNumber)
+      axios.put('/api/deposit/'+accountNumber, {
+          balance: self.balance
+        }.bind(this))
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     },
     }
   });

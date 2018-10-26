@@ -1,11 +1,8 @@
 {
 	"accounts": [
 		{
-			"id": "1",
 			"accountNumber": "0000-0000-0001",
-			"name": "Macky Llego",
-			"balance": 10000,
-			"pin": "123"
+			"balance": null
 		},
 		{
 			"id": "2",
