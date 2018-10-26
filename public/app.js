@@ -27,6 +27,26 @@
       this.balance = null,
       this.pin = null  
     },
+    check: function() {
+      var self = this;
+      var payload = {
+        accountNumber: self.accountNumber,
+        pin: self.pin
+      };
+      axios.get('/api/:id', {
+          params: {
+            accountNumber: self.accountNumber,
+            pin: self.pin
+          }
+        })
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+    },
     }
   });
 })();

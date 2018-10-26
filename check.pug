@@ -10,7 +10,16 @@ html(lang="en")
 
   body
     main#app(role="main" class="container")
-        h1 Check Balance
+      h1 Check Balance
+      form#fundTransferForm(action="/" method="POST")
+          .form-group
+            label Account Number
+            input.form-control#accountNumber(type="text" name="accountNumber" v-model="accountNumber")
+          .form-group
+            label PIN
+            input.form-control#pin(type="password" name="pin" v-model="pin")
+          .form-group
+            button.btn.btn-primary(type="button" v-on:click="check") Check Balance
           
 
     script(src="https://unpkg.com/axios/dist/axios.min.js")
