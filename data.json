@@ -1,0 +1,31 @@
+{
+	"accounts": [
+		{
+			"id": "1",
+			"accountNumber": "0000-0000-0001",
+			"name": "Macky Llego",
+			"balance": 10000,
+			"pin": "123"
+		},
+		{
+			"id": "2",
+			"accountNumber": "0000-0000-0002",
+			"name": "John Carlo Cuya",
+			"balance": 10000,
+			"pin": "123"
+		},
+		{
+			"id": 3,
+			"accountNumber": "0000-0000-0003",
+			"name": "Machy",
+			"balance": 100,
+			"pin": "123"
+		},
+		{
+			"accountNumber": "0000-0000-0001",
+			"name": "Macky Llego",
+			"balance": 10000,
+			"pin": "123"
+		}
+	]
+}

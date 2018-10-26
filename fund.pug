@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+    title= title
+
+    link(rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
+
+  body
+    main#app(role="main" class="container")
+        h1 Fund Transfer
+        form#fundTransferForm(action="/" method="POST")
+          .form-group
+            label Sender Account Number
+            input.form-control#senderAccountNumber(type="text" name="senderAccountNumber" v-model="senderAccountNumber")
+          .form-group
+            label Receiver Account Number
+            input.form-control#ReceiverAccountNumber(type="text" name="ReceiverAccountNumber" v-model="ReceiverAccountNumber")
+          .form-group
+            label Amount to transfer
+            input.form-control#amount(type="text" name="amount" v-model="amount")
+          .form-group
+            button.btn.btn-primary(type="button" v-on:click="transfer") Transfer
+          
+          
+
+    script(src="https://unpkg.com/axios/dist/axios.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js")
+    script(src="/app.js")
