@@ -42,6 +42,11 @@ app.get('/bills', (req, res) => {
   res.render('../bills.pug');
 });
 
+//loan
+app.get('/loan', (req, res) => { 
+  res.render('../loan.pug');
+});
+
 //all users
 app.get('/api/', (req,res) => {
   var accounts = store.get('accounts'); 
@@ -93,7 +98,7 @@ app.put('/api/:id', (req,res) => {
   res.json(note);
 });
 
-//update user using accountNumber
+//deposit
 app.put('/api/deposit/:accountNumber', (req,res) => {
   var accountNumber = req.params.accountNumber;
   var all = store.get('accounts');
@@ -120,7 +125,35 @@ app.put('/api/deposit/:accountNumber', (req,res) => {
   res.json(note);
 });
 
+//withdraw
 app.put('/api/withdraw/:accountNumber', (req,res) => {
+  var accountNumber = req.params.accountNumber;
+  var all = store.get('accounts');
+  let note = {};
+  
+  console.log(req.body);
+  
+  var user = all.find( u => u.accountNumber === accountNumber);
+
+  console.log(user);
+
+  for (let i = 0; i < all.length; i++) {
+    if (all[i].accountNumber == accountNumber) {
+      all[i].id = user.id;
+      all[i].name = user.name;
+      all[i].balance = Number(user.balance) - Number(req.body.balance);
+      all[i].pin = user.pin;
+      note = all[i];
+      break;
+    }
+  }
+
+  store.set('accounts', all);
+  res.json(note);
+});
+
+//bills
+app.put('/api/bills/:accountNumber', (req,res) => {
   var accountNumber = req.params.accountNumber;
   var all = store.get('accounts');
   let note = {};
@@ -146,6 +179,32 @@ app.put('/api/withdraw/:accountNumber', (req,res) => {
   res.json(note);
 });
 
+//loan
+app.put('/api/loan/:accountNumber', (req,res) => {
+  var accountNumber = req.params.accountNumber;
+  var all = store.get('accounts');
+  let note = {};
+  
+  console.log(req.body);
+  
+  var user = all.find( u => u.accountNumber === accountNumber);
+
+  console.log(user);
+
+  for (let i = 0; i < all.length; i++) {
+    if (all[i].accountNumber == accountNumber) {
+      all[i].id = user.id;
+      all[i].name = user.name;
+      all[i].balance = Number(user.balance) + Number(req.body.balance);
+      all[i].pin = user.pin;
+      note = all[i];
+      break;
+    }
+  }
+
+  store.set('accounts', all);
+  res.json(note);
+});
 
 app.set('view engine', 'pug');
 
