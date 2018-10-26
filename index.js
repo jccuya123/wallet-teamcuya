@@ -94,17 +94,23 @@ app.put('/api/:id', (req,res) => {
 });
 
 //update user using accountNumber
-app.put('/api/account/:accountNumber', (req,res) => {
+app.put('/api/deposit/:accountNumber', (req,res) => {
   var accountNumber = req.params.accountNumber;
   var all = store.get('accounts');
   let note = {};
   
+  console.log(req.body);
+  
+  var user = all.find( u => u.accountNumber === accountNumber);
+
+  console.log(user);
+
   for (let i = 0; i < all.length; i++) {
     if (all[i].accountNumber == accountNumber) {
-      all[i].id = req.body.id;
-      all[i].name = req.body.name;
-      all[i].balance = req.body.balance;
-      all[i].pin = req.body.pin;
+      all[i].id = user.id;
+      all[i].name = user.name;
+      all[i].balance = Number(user.balance) + Number(req.body.balance);
+      all[i].pin = user.pin;
       note = all[i];
       break;
     }
@@ -113,6 +119,33 @@ app.put('/api/account/:accountNumber', (req,res) => {
   store.set('accounts', all);
   res.json(note);
 });
+
+app.put('/api/withdraw/:accountNumber', (req,res) => {
+  var accountNumber = req.params.accountNumber;
+  var all = store.get('accounts');
+  let note = {};
+  
+  console.log(req.body);
+  
+  var user = all.find( u => u.accountNumber === accountNumber);
+
+  console.log(user);
+
+  for (let i = 0; i < all.length; i++) {
+    if (all[i].accountNumber == accountNumber) {
+      all[i].id = user.id;
+      all[i].name = user.name;
+      all[i].balance = Number(req.body.balance) - Number(user.balance);
+      all[i].pin = user.pin;
+      note = all[i];
+      break;
+    }
+  }
+
+  store.set('accounts', all);
+  res.json(note);
+});
+
 
 app.set('view engine', 'pug');
 

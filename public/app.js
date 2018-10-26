@@ -45,11 +45,16 @@
           console.log(error);
         });
     },
+
     deposit: function() {
       var self = this;
-      var accountNumber = self.accountNumber + self.amount;
-      console.log(accountNumber)
-      axios.put('/api/account/'+accountNumber, {
+      var bal = Number(self.balance) + Number(self.amount);
+      // console.log(accountNumber)
+      axios.put('/api/deposit/'+ self.accountNumber, {
+          // id: self.id,
+          accountNumber: self.accountNumber,
+          // name: self.name,
+          balance: self.amount,
           pin: self.pin
         })
       .then(function (response) {
@@ -59,11 +64,12 @@
         console.log(error);
       });
     },
+
     withdraw: function() {
       var self = this;
       var accountNumber = self.accountNumber - self.amount;
       console.log(accountNumber)
-      axios.put('/api/account/'+accountNumber, {
+      axios.put('/api/withdraw/'+accountNumber, {
           pin: self.pin
         })
       .then(function (response) {
@@ -89,11 +95,23 @@
     },
     fund: function() {
       var self = this;
-      var accountNumber = self.accountNumber - self.amount;
+      var accountNumber = self.senderAccountNumber;
+      var accountNumber2 = self.receiverAccountNumber;
+
       console.log(accountNumber)
       axios.put('/api/account/'+accountNumber, {
           pin: self.pin
         })
+      .then(function (response) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      
+      axios.put('/api/account/'+accountNumber2, {
+        pin: self.pin
+      })
       .then(function (response) {
         console.log(response.data);
       })
